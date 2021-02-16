@@ -1,9 +1,33 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using BellaBlog.Models
+@model List<Blog>
 @{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
+<div class="w3-col l8 s12">
+    @foreach (var x in Model)
+    {
+        <!-- Blog entry -->
+        <div class="w3-container w3-white w3-margin w3-padding-large">
+            <div class="w3-center">
+                <h3>@x.Title</h3>
+                <h5> <span class="w3-opacity">@x.Date.ToShortDateString()</span></h5>
+            </div>
 
-melabaaaa
+            <div class="w3-justify">
+              
+                <p>
+                    @x.Content
+                </p>
+                <a href="/Home/BlogDetay/@x.BlogId"><p class="w3-right"><button class="w3-button w3-black"><b>Daha fazla</b></button></p>                </a>
+                <a href="/Home/Düzenle/"><p class="w3-right"><button class="w3-button w3-black"><b>Düzenle</b></button></p>                </a>
+                <p class="w3-clear"></p>
+
+            </div>
+        </div>
+        <hr>
+
+    }
+ 
